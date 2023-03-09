@@ -1,0 +1,13 @@
+.nav {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 240px;
+    transition: width 0.5s;
+}
+
+.nav-hide {
+    width: 0px;
+}
