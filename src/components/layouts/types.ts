@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { ReactNode } from 'react'
 
 export type ContentWidth = 'full' | 'boxed'
@@ -47,4 +48,11 @@ export type BlankLayoutProps = {
 
 export type PageCardStyle = {
   pageCardStyle: Object
+}
+
+export type PageCardDateProps = PageCardStyle & {
+  selectedDate: dayjs.Dayjs
+  selectedTime: dayjs.Dayjs
+  setSelectedDate: (date: dayjs.Dayjs) => void
+  setSelectedTime: (time: dayjs.Dayjs) => void
 }
