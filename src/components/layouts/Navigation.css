@@ -1,13 +1,18 @@
 .nav {
     display: flex;
+    position: absolute;
+    width: 240px;
     height: 100%;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     overflow: hidden;
-    width: 240px;
-    transition: width 0.5s;
+    background: #a3ebff;
+    transition: width 0.5s, box-shadow 0.25s;
+    z-index: 99999;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 .nav-hide {
     width: 0px;
+    box-shadow: none;
 }

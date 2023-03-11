@@ -1,3 +1,5 @@
+import "./MainLayout.css"
+
 // ** React Imports
 import { useState } from 'react'
 
@@ -55,18 +57,13 @@ const MainLayout = (props: LayoutProps) => {
 
   // ** Toggle Functions
   const toggleNavVisibility = () => setNavVisible(!navVisible)
+  
+  const showBackdrop = navVisible ? "backdrop-show" : '';
 
   return (
       <MainLayoutWrapper style={{
         background: '#a3ebff'
       }}>
-        <Navigation
-          navVisible={navVisible}
-          setNavVisible={setNavVisible}
-          toggleNavVisibility={toggleNavVisibility}
-          loggedIn={props.loggedIn}
-        />
-        
         <MainContentWrapper style={{
           backgroundColor: '#eaf6ff',
         }}>
@@ -90,6 +87,15 @@ const MainLayout = (props: LayoutProps) => {
             &copy; 2023 by William - LGH 1202
           </div>
         </MainContentWrapper>
+        
+        <div id="backdrop" className={showBackdrop} onClick={toggleNavVisibility}></div>
+
+        <Navigation
+          navVisible={navVisible}
+          setNavVisible={setNavVisible}
+          toggleNavVisibility={toggleNavVisibility}
+          loggedIn={props.loggedIn}
+        />
       </MainLayoutWrapper>
   )
 }
