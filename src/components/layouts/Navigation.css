@@ -1,7 +1,8 @@
 .nav {
+    --initial-width: 240px;
     display: flex;
     position: absolute;
-    width: 240px;
+    width: var(--initial-width);
     height: 100%;
     flex-direction: column;
     /* justify-content: space-between; */
@@ -15,4 +16,16 @@
 .nav-hide {
     width: 0px;
     box-shadow: none;
+}
+
+/* media queries */
+@media (min-width: 1200px) {
+    .nav {
+        width: var(--initial-width) !important;
+        position: initial;
+    }
+
+    #sidebar-menu-toggle {
+        display: none;
+    }
 }

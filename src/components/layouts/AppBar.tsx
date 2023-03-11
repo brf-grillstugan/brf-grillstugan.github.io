@@ -25,16 +25,17 @@ const LayoutAppBar = (props: AppBarProps) => {
         }}>
             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 <div className='app-bar-left'>
-                <IconButton
-                    size="large"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ mr: 2 }}
-                    onClick={toggleNavVisibility}
-                >
-                    <Icon fontSize='inherit'>menu</Icon>
-                </IconButton>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        sx={{ mr: 2 }}
+                        onClick={toggleNavVisibility}
+                        id='sidebar-menu-toggle'
+                    >
+                        <Icon fontSize='inherit'>menu</Icon>
+                    </IconButton>
                 </div>
                 <div className='app-bar-right'>
                     {props.loggedIn ? <Icon>account_circle</Icon> : null}

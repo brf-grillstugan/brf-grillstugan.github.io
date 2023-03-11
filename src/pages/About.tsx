@@ -1,9 +1,10 @@
 import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { PageCardStyle } from "../components/layouts/types";
 
-const About = () => {
+const About = (props: PageCardStyle) => {
   return (
-    <Card>
+    <Card sx={props.pageCardStyle}>
         <CardHeader title='About' titleTypographyProps={{ variant: 'h6' }} />
         <CardContent>
             <Typography variant="h4">

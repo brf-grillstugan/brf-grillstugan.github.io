@@ -53,7 +53,7 @@ const MainLayout = (props: LayoutProps) => {
   const { children } = props
 
   // ** States
-  const [navVisible, setNavVisible] = useState<boolean>(true)
+  const [navVisible, setNavVisible] = useState<boolean>(false)
 
   // ** Toggle Functions
   const toggleNavVisibility = () => setNavVisible(!navVisible)
@@ -64,6 +64,15 @@ const MainLayout = (props: LayoutProps) => {
       <MainLayoutWrapper style={{
         background: '#a3ebff'
       }}>
+        <Navigation
+          navVisible={navVisible}
+          setNavVisible={setNavVisible}
+          toggleNavVisibility={toggleNavVisibility}
+          loggedIn={props.loggedIn}
+        />
+        
+        <div id="backdrop" className={showBackdrop} onClick={toggleNavVisibility}></div>
+
         <MainContentWrapper style={{
           backgroundColor: '#eaf6ff',
         }}>
@@ -87,15 +96,6 @@ const MainLayout = (props: LayoutProps) => {
             &copy; 2023 by William - LGH 1202
           </div>
         </MainContentWrapper>
-        
-        <div id="backdrop" className={showBackdrop} onClick={toggleNavVisibility}></div>
-
-        <Navigation
-          navVisible={navVisible}
-          setNavVisible={setNavVisible}
-          toggleNavVisibility={toggleNavVisibility}
-          loggedIn={props.loggedIn}
-        />
       </MainLayoutWrapper>
   )
 }
