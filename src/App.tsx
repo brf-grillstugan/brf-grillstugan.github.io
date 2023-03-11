@@ -1,8 +1,10 @@
 import React from 'react';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import MainLayout from './components/layouts/MainLayout';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import Home from './pages/Home';
+import About from './pages/About';
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -12,7 +14,10 @@ function App() {
       <BrowserRouter>
         <CssBaseline />
         <MainLayout loggedIn={loggedIn}>
-          <Button variant="contained" onClick={() => setLoggedIn(!loggedIn)}>Hello World</Button>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
         </MainLayout>
       </BrowserRouter>
     </React.Fragment>
