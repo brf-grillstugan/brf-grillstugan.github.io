@@ -1,5 +1,5 @@
 
-import { Menu } from '@mui/material'
+import { IconButton, Menu } from '@mui/material'
 import { LayoutProps } from './types'
 import Icon from '@mui/material/Icon';
 import Box from '@mui/material/Box';
@@ -15,12 +15,7 @@ const LayoutAppBar = (props: AppBarProps) => {
     const { toggleNavVisibility } = props
 
     const background = '#a3ebff';
-    const icon_style = {
-        color: 'black',
-        fontSize: '2rem',
-        cursor: 'pointer',
-    };
-    
+
     return (
         <header style={{
             display: 'flex',
@@ -30,10 +25,19 @@ const LayoutAppBar = (props: AppBarProps) => {
         }}>
             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 <div className='app-bar-left'>
-                    <Icon style={icon_style} onClick={toggleNavVisibility}>menu</Icon>
+                <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 2 }}
+                    onClick={toggleNavVisibility}
+                >
+                    <Icon fontSize='inherit'>menu</Icon>
+                </IconButton>
                 </div>
                 <div className='app-bar-right'>
-                    {props.loggedIn ? <Icon style={icon_style}>account_circle</Icon> : null}
+                    {props.loggedIn ? <Icon>account_circle</Icon> : null}
                 </div>
             </Box>
         </header>
