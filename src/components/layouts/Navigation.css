@@ -1,7 +1,7 @@
 .nav {
     --initial-width: 240px;
     display: flex;
-    position: absolute;
+    position: fixed;
     width: var(--initial-width);
     height: 100%;
     flex-direction: column;
