@@ -1,5 +1,7 @@
 import dayjs from 'dayjs'
 import { ReactNode } from 'react'
+import { CalendarEvent } from 'kalend';
+
 
 export type ContentWidth = 'full' | 'boxed'
 
@@ -50,9 +52,18 @@ export type PageCardStyle = {
   pageCardStyle: Object
 }
 
-export type PageCardDateProps = PageCardStyle & {
-  selectedDate: dayjs.Dayjs
-  selectedTime: dayjs.Dayjs
-  setSelectedDate: (date: dayjs.Dayjs) => void
-  setSelectedTime: (time: dayjs.Dayjs) => void
+export type BookingEvent = {
+  title: string,
+  start: dayjs.Dayjs,
+  end: dayjs.Dayjs,
+  color: string,
 }
+
+export type BookingDetailsProps = PageCardStyle & {
+  booking: BookingEvent | undefined,
+  defaultBookingTitle: string,
+  defaultBookingColor: string,
+  setBooking: (booking: BookingEvent) => void,
+}
+
+export type BookingPageProps = BookingDetailsProps & PageCardStyle;

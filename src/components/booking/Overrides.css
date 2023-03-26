@@ -1,0 +1,5 @@
+
+
+.static-time-picker-override > div.MuiDialogActions-root.MuiPickersLayout-actionBar {
+    display: none;
+}

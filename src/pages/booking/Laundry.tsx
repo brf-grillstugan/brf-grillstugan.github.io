@@ -1,44 +1,42 @@
-import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
-import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
-import { StaticTimePicker } from "@mui/x-date-pickers/StaticTimePicker";
-import { PageCardDateProps, PageCardStyle } from "../../components/layouts/types";
-import dayjs from "dayjs";
+import { BookingPageProps } from '../../components/layouts/types';
+import Booking from "../../components/booking/Booking";
 
-const Laundry = (props: PageCardDateProps) => {
+const Laundry = (props: BookingPageProps) => {
+  const events = [{
+      id: 0,
+      startAt: "2023-03-22T08:00:00.000Z",
+      endAt: "2023-03-22T15:00:00.000Z",
+      summary: "William",
+      color: "red",
+    },
+    {
+      id: 0,
+      startAt: "2023-03-15T06:00:00.000Z",
+      endAt: "2023-03-15T10:00:00.000Z",
+      summary: "Vilgot",
+      color: "blue",
+    },
+    {
+      id: 0,
+      startAt: "2023-03-24T06:00:00.000Z",
+      endAt: "2023-03-24T10:00:00.000Z",
+      summary: "Martin",
+      color: "green",
+    },
+    {
+      id: 0,
+      startAt: "2023-03-28T12:00:00.000Z",
+      endAt: "2023-03-28T19:00:00.000Z",
+      summary: "Gustav",
+      color: "yellow",
+    }];
 
-  return (
-    <Card sx={props.pageCardStyle}>
-      <CardHeader
-        title="Laundry Booking"
-        titleTypographyProps={{ variant: "h6" }}
-      />
-      <CardContent>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          <StaticDatePicker
-            defaultValue={props.selectedDate}
-            disablePast={true}
-            onChange={(v, _) => props.setSelectedDate(v ?? dayjs())}
-            // orientation="landscape"
-            sx={{ width: "fit-content" }}
-          />
-          <StaticTimePicker
-            defaultValue={props.selectedTime}
-            ampm={false}
-            minutesStep={15}
-            onChange={(v, _) => props.setSelectedTime(v ?? dayjs())}
-          />
-        </div>
-      </CardContent>
-    </Card>
-  );
+  return <Booking
+        {...props}
+        headerTitle="Laundry Booking"
+        resourceID="laundry"
+        events={events}
+    />;
 };
 
 export default Laundry;
