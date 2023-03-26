@@ -28,10 +28,11 @@ import dayjs from 'dayjs';
 export type BookingProps = PageCardStyle & BookingDetailsProps & { 
     headerTitle: string,
     resourceID: string,
-  events: CalendarEvent[];
+    events: CalendarEvent[];
 };
 
 const Booking = (props: BookingProps) => {
+  const nextFreeID = props.events.reduce((acc, e) => Math.max(acc, e.id), 0) + 1;
   const [tmpBookingEvent, setTmpBookingEvent] = useState<CalendarEvent | undefined>();
 
   React.useEffect(() => {
@@ -48,7 +49,7 @@ const Booking = (props: BookingProps) => {
   useEffect(() => {
     if (props.booking) {
       setTmpBookingEvent({
-        id: 0,
+        id: nextFreeID,
         startAt: props.booking.start.toISOString(),
         endAt: props.booking.end.toISOString(),
         summary: props.booking.title,
@@ -56,6 +57,8 @@ const Booking = (props: BookingProps) => {
       });
     }
   }, [props.booking]);
+
+  const min_booking_duration = 1; // hours
 
   return (
     <Card sx={props.pageCardStyle}>
@@ -101,7 +104,7 @@ const Booking = (props: BookingProps) => {
             />
             <StaticTimePicker
               className="end-time-picker static-time-picker-override"
-              minTime={props.booking?.start.add(15, "minute")}
+              minTime={props.booking?.start.add(min_booking_duration, "hour")}
               ampm={false}
               minutesStep={15}
               value={props.booking?.end ?? dayjs()}
